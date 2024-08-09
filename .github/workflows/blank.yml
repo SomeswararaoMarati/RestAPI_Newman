@@ -1,0 +1,19 @@
+name: Node and Newman Job
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'  # Replace with your desired Node.js version
+    - name: Install dependencies
+      run: npm install
+    - name: Run Newman
+      run: npx newman run 'Booking API.postman_collection.json'  # Replace 'xyz.json' with your collection file
