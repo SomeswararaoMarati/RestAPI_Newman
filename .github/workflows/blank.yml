@@ -16,4 +16,4 @@ jobs:
     - name: Install dependencies
       run: npm install
     - name: Run Newman
-      run: npx newman run 'Booking API.postman_collection.json'  # Replace 'xyz.json' with your collection file
+      run: npx newman run 'Booking API.postman_collection.json'  # Just Replace 'xyz.json' with your collection file
