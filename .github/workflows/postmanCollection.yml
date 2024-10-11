@@ -33,13 +33,8 @@ jobs:
       - name: Upload Test Results
         uses: actions/upload-artifact@v4
         with:
-          name: html
-          path: testArtifacts/htmlreport.html
-
-      - name: Display HTML Report Link
-        run: |
-          artifact_url=$(jq -r '.artifact_url' <(curl -s https://api.github.com/${{ github.repository }}/actions/artifacts/${{ artifacts.Report.id }}))
-          echo "HTML Report Link: $artifact_url"
+          name: Reports
+          path: testArtifacts
 
       - name: Send some mail
         uses: dawidd6/action-send-mail@v3.6.0
@@ -50,6 +45,6 @@ jobs:
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Workflow finished
           body: "Your Postman tests have completed. You can view the results here ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          to: someshforaws@gmail.com
+          to: someshforaws@gmail.com,smarati@oneplan.ai
           from: Me
           secure: false
