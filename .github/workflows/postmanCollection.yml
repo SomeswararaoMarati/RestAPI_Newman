@@ -28,4 +28,4 @@ jobs:
 
 
       - name: Run Postman Tests
-        run: newman run APIAUTOMATION.postman_collection -r cli,htmlextra --reporter-htmlextra-export testArtifacts/htmlreport.html
+        run: newman run APIAUTOMATION.postman_collection.json -r cli,htmlextra --reporter-htmlextra-export testArtifacts/htmlreport.html
