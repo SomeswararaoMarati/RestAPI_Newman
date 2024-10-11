@@ -31,7 +31,7 @@ jobs:
         run: newman run APIAUTOMATION.postman_collection.json -r cli,htmlextra --reporter-htmlextra-export testArtifacts/htmlreport.html
 
       - name: Upload Test Results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Reports
           path: testArtifacts
