@@ -41,4 +41,4 @@ jobs:
         with:
           to: someswararao.m@gmail.com
           subject: Postman Test Results
-          body: "Your Postman tests have completed. You can view the results here: ${{} github.server_url }}/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          body: "Your Postman tests have completed. You can view the results here: ${{ github.server_url }}/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}"
