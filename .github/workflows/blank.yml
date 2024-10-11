@@ -11,7 +11,6 @@ jobs:
         run: mkdir TestArtifact
 
       - uses: actions/setup-node@v3
-      - name: Install Node
         with:
           node-version: '20'
 
@@ -24,8 +23,7 @@ jobs:
       - name: Run Tests
         run: newman run "APIAUTOMATION.postman_collection.json" -r cli,htmlextra --reporter-htmlextra-export TestArtifact/htmlreport.html
 
-      - name: Upload the reports
-        uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v3
         with:
           name: Reports
           path: TestArtifact
