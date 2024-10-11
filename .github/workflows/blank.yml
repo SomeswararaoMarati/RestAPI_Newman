@@ -1,0 +1,43 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Automated API tests using Newman CLI
+on: workflow_dispatch
+
+jobs:
+  test-API:
+    runs-on: ubuntu-latest    
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - name: Create dir
+        run: |
+          mkdir TestArtifact
+
+     # Install Node on the runner
+      - uses: actions/setup-node@v3
+      - name: Install Node
+        with: 
+           node-version: '20'
+
+     # Install newman globally, the reporter for Slack, and install the HTML extra reporter on the runner
+      - name: Install Newman
+        run: |
+          npm install -g newman
+          npm install -g newman-reporter-slackreporter
+          npm install -g newman-reporter-htmlextra
+
+     # Run the POSTMAN Collection
+      - name: Run Tests
+        run: newman run "APIAUTOMATION.postman_collection.json" -r cli,htmlextra --reporter-htmlextra-export TestArtifact/htmlreport.html
+
+     # Upload the reports to the TestArtifacts directory
+      - name: Output the results
+      - uses: actions/upload-artifact@v3
+        with: 
+           name: Reports
+           path: testArtifacts
+        
+
+        
+
+     
