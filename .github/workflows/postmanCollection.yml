@@ -37,7 +37,7 @@ jobs:
           path: testArtifacts
 
       - name: Send some mail
-        uses: wadeww/send-email-action@master
+        uses: wadeww/send-email-action@v2.0.0
         with:
           server_address: smtp.gmail.com
           port: 465
