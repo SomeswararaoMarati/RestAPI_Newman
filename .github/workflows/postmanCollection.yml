@@ -35,3 +35,10 @@ jobs:
         with:
           name: Reports
           path: testArtifacts
+
+      - name: Send Email Notification
+        uses: actions/send-mail@v3
+        with:
+          to: someswararao.m@gmail.com@example.com
+          subject: Postman Test Results
+          body: `Your Postman tests have completed. You can view the results here: ${ github.server_url }/repos/${{ github.repository }}/actions/runs/${{ run.id }}`
