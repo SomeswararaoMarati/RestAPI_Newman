@@ -10,7 +10,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
+      - name: Print Context Variables
+        run: |
+          echo "Server URL: ${{ github.server_url }}"
+          echo "Repository: ${{ github.repository }}"
+          echo "Run ID: ${{ github.run_id }}"
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -39,6 +43,6 @@ jobs:
       - name: Send Email Notification
         uses: actions/send-mail@v3
         with:
-          to: someswararao.m@gmail.com@example.com
+          to: someswararao.m@gmail.com
           subject: Postman Test Results
-          body: "Your Postman tests have completed. You can view the results here: ${{ github.server_url }}/repos/${{ github.repository }}/actions/runs/${{ run.id }}"
+          body: "Your Postman tests have completed. You can view the results here: ${{ github.server_url }}/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}"
