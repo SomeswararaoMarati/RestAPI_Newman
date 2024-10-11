@@ -1,19 +1,20 @@
-name: Node and Newman Job
-
-on:
-  push:
-    branches: [ main ]
+name: Automated API tests using Newman CLI
+on: workflow_dispatch
 
 jobs:
-  build:
+  test-API:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v3
-    - name: Install Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20'  # Replace with your desired Node.js version
-     - name: Install Newman
+      - uses: actions/checkout@v3
+      - name: Create dir
+        run: mkdir TestArtifact
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install Newman
         run: |
           npm install -g newman
           npm install -g newman-reporter-slackreporter
