@@ -41,7 +41,7 @@ jobs:
           path: testArtifacts
 
       - name: Send Email Notification
-        uses: actions/send-mail@v3
+      - uses: actions-js/send-mail@v1
         with:
           to: someswararao.m@gmail.com
           subject: Postman Test Results
