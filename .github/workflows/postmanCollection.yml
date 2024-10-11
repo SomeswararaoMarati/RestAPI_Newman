@@ -37,7 +37,7 @@ jobs:
           path: testArtifacts
 
       - name: Send some mail
-        uses: wadeww/send-email-action@v2.0.0
+        uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
           port: 465
@@ -46,4 +46,5 @@ jobs:
           subject: Workflow finished
           body: "Your Postman tests have completed. You can view the results here: ${{ github.server_url }}/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           to: someshforaws@denver.com
-          from: Me
+          from: someswararao.m@gmail.com
+          secure: true
