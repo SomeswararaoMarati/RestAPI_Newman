@@ -44,7 +44,7 @@ jobs:
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Workflow finished
-          body: "Your Postman tests have completed. You can view the results here ${{ github.server_url }}/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          to: someshforaws@gmail.com
+          body: "Your Postman tests have completed. You can view the results here ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          to: someswararao.m@gmail.com
           from: Me
           secure: true
