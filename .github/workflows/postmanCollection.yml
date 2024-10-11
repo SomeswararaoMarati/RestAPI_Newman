@@ -1,4 +1,4 @@
-name: Run Postman Tests with Latest Node
+name: Run Postman Tests with Node Version 20
 
 on:
   push:
@@ -14,10 +14,18 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: 20
+
+      - name: Create testArtifacts folder
+        run: mkdir testArtifacts
 
       - name: Install Newman
-        run: npm install -g newman
+        run: |
+          npm install -g newman
+          npm install -g newman-reporter-slackreporter
+          npm install -g newman-reporter-htmlextra
+
+
 
       - name: Run Postman Tests
-        run: newman run APIAUTOMATION.postman_collection.json
+        run: newman run APIAUTOMATION.postman_collection -r cli,htmlextra --reporter-htmlextra-export testArtifacts/htmlreport.html
