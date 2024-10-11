@@ -28,13 +28,13 @@ jobs:
 
 
       - name: Run Postman Tests
-        run: newman run APIAUTOMATION.postman_collection.json -r cli,htmlextra --reporter-htmlextra-export testArtifacts/htmlreport.html
+        run: newman run APIAUTOMATION.postman_collection.json -o testArtifacts/test-results.json -r html
 
       - name: Upload Test Results
         uses: actions/upload-artifact@v4
         with:
           name: Reports
-          path: testArtifacts
+          path: ./newman_report.html
 
       - name: Send some mail
         uses: dawidd6/action-send-mail@v3.6.0
@@ -47,4 +47,4 @@ jobs:
           body: "Your Postman tests have completed. You can view the results here ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           to: someshforaws@gmail.com
           from: Me
-          secure: true
+          secure: false
