@@ -36,9 +36,14 @@ jobs:
           name: Reports
           path: testArtifacts
 
-      - name: Send Email Notification
-        uses: actions-js/send-mail@v1
+      - name: Send some mail
+        uses: wadeww/send-email-action@master
         with:
-          to: someswararao.m@gmail.com
-          subject: Postman Test Results
+          server_address: smtp.gmail.com
+          port: 465
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          subject: Workflow finished
           body: "Your Postman tests have completed. You can view the results here: ${{ github.server_url }}/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          to: someshforaws@denver.com
+          from: Me
