@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "newman": "^6.2.1"
+  },
+  "devDependencies": {
+    "moment": "^2.30.1"
   }
 }
