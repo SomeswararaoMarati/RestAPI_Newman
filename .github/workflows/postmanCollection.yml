@@ -1,4 +1,4 @@
-name: Run Postman Tests with Node Version - 20
+name: Run Postman Tests with Node Version - 22
 
 on:
   push:
